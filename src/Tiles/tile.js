@@ -1,4 +1,4 @@
-class Tile {
+export default class Tile {
     constructor(canvas, id, x, y, sidelength, color) {
         this.ctx = canvas.getContext("2d");
         this.id = id;
@@ -10,7 +10,6 @@ class Tile {
         this.width = sidelength;
         this.height = sidelength;
     }
-
     draw() {
         this.ctx.fillStyle = this.color;
         this.ctx.fillRect(this.position.x, this.position.y, this.width, this.height); // x y width height

@@ -1,17 +1,6 @@
 import Board from "./board.js";
 
 const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-let width = canvas.width;
-let height = canvas.height;
-
-function createBoard(rows, columns) {
-    const board = new Board();
-    const tile = new Tile();
-    const size = calculateSize(width, height, rows, columns);
-
-    for(let i = 0; i < rows; i++) {
-
-    }
-}
+const board = new Board(canvas, 20, 20, "rgb(100, 100, 100)", "rgb(150, 150, 150)");
+board.draw();
 
