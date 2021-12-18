@@ -1,6 +1,6 @@
 class Tile {
-    constructor(context, id, x, y, sidelength, color) {
-        this.ctx = context;
+    constructor(canvas, id, x, y, sidelength, color) {
+        this.ctx = canvas.getContext("2d");
         this.id = id;
         this.position = {   // top left corner
             x: x,

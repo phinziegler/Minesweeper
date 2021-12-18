@@ -15,9 +15,3 @@ function createBoard(rows, columns) {
     }
 }
 
-function calculateSize(width, height, rows, columns) {
-    let rowSize = (width / rows);
-    let colSize = (height / columns);
-
-    return Math.min(rowSize, colSize);
-}
