@@ -10,25 +10,32 @@ export default class Board {
         this.tileSize = this.calculateSize(canvas.width, canvas.height, rows, columns);
         this.rows = rows;
         this.columns = columns;
+        this.play = true;
         this.createBoard(canvas, rows, columns);
         // Listen for mousedown events on the canvas.
         this.canvas.addEventListener("mousedown", (e) => {
-            switch (e.which) {
-                case 1:
-                    this.getTile(this.mouseLocation(e)).handleClick(this.firstClick);
-                    break;
-                case 3:
-                    this.getTile(this.mouseLocation(e)).handleFlag();
-                    break;
-                default:
-                    break;
+            if(this.play) {
+
+                switch (e.which) {
+                    case 1:
+                        this.getTile(this.mouseLocation(e)).handleClick(this.firstClick);
+                        break;
+                    case 3:
+                        this.getTile(this.mouseLocation(e)).handleFlag();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
         this.canvas.addEventListener("contextmenu", (e) => {
-            e.preventDefault();     // Prevent context menu opening
+            if(this.play) {
+                e.preventDefault();     // Prevent context menu opening
+            }
         });
         this.firstClick = true;
         this.numBombs = numBombs;
+        this.bombList = [];
     }
 
     setFirstClick(bool) {
@@ -142,6 +149,7 @@ export default class Board {
             }
             const save = this.tiles[randIndex];
             this.tiles[randIndex] = new BombTile(this.canvas, this, save.getID(), save.getX(), save.getY(), save.getSidelength(), save.getColor());
+            this.bombList.push(this.tiles[randIndex]);
         }        
     }
 
@@ -168,12 +176,14 @@ export default class Board {
                 output.push(checks[i]);
             }
         }
-
-        // console.log(index + " has " + output.length + " surrounding tiles:");
-        // for(let i = 0; i < output.length; i++) {
-        //     console.log(output[i].getID());
-        // }
-
         return output;
+    }
+
+    revealBombs() {
+        for(let i = 0; i < this.bombList.length; i++) {
+            this.bombList[i].solve();
+            this.bombList[i].draw();
+        }
+        this.play = false;
     }
 }

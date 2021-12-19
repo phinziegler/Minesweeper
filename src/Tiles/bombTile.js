@@ -6,10 +6,7 @@ export default class BombTile extends Tile {
         this.name = "BombTile";
     }
     handleClick() {
-        this.solve();
-        // this.color = "red";
-        console.log("BOOOOOOOOOOOOOOOOOOOM");
-        this.draw();
+        this.board.revealBombs();
     }
     drawData(ctx, x, y, color) {
         let image = document.getElementById("mine");
