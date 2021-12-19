@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,11 @@
 
     <!-- LINKS AND SCRIPTS -->
     <link rel="stylesheet" href="style.css">
-    <script type="module"src="src/script.js"defer></script>
+    <script type="module" src="src/script.js" defer></script>
 </head>
 
 <!-- PAGE START-->
+
 <body>
     <!-- INTRO -->
     <div id="intro">
@@ -19,7 +21,23 @@
         <p>by Phineas Ziegler</p>
     </div>
 
-    <!-- CANVAS -->
-    <canvas id="canvas"width="800"height="800"></canvas>
+    <!-- GAME -->
+    <div id="gameBox">
+        <div id="gameInfo">
+            <div id="timer" class="info">
+                TIMER
+            </div>
+            <div id="bombCount" class="info">
+                BOMBS
+            </div>
+            <div id="difficulty" class="info">
+                EASY
+            </div>
+        </div>
+        <div id="canvasBox">    
+            <canvas id="canvas" width="600" height="600"></canvas>
+        </div>
+    </div>
 </body>
+
 </html>

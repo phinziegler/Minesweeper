@@ -20,9 +20,37 @@ html {
     text-align: center;
     line-height: 2rem;
 }
-#canvas {
+#gameBox {
+    /* width: 650px; */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgb(102, 102, 102);
+    /* background-color: rgb(39, 39, 39); */
+    /* border-radius: 10px; */
+    /* padding: 10px; */
+    /* border: 5px solid red; */
+}
+#gameInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgb(85, 85, 85);
+    border-radius: 10px 10px 0 0;
+}
+.info {
+    line-height: 40px;
+    width: 100px;
+}
+#canvas {
+    position: relative;
+    /* padding: 4px 4px 0 4px;       IDK WHY I NEED THIS, RANDOM SPACE AT BOTTOM */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 5px 5px;
+}
+#canvasBox {
+    margin-top: 5px;
+    /* background-color: rgb(46, 46, 46); */
+    /* padding: 10px 10px 6px 10px; */
+    border-radius: 0 0 10px 10px;
 }
