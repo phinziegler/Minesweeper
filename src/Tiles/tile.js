@@ -61,7 +61,7 @@ export default class Tile {
     }
 
     drawData(ctx, x, y, color) {
-        console.error("unimplemented command");
+        console.error("drawData() unimplemented");
     }
     drawFlag(ctx, x, y, fac, color) {
         const len = this.sidelength;

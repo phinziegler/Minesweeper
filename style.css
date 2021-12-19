@@ -51,6 +51,9 @@ html {
     transform: translateX(-50%);
     /* border-radius: 0 0 5px 5px; */
 }
+#mine {
+    display: none;
+}
 
 /* @font-face {
     font-family: 'KulminoituvaRegular';

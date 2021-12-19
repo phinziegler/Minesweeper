@@ -6,6 +6,20 @@ export default class BombTile extends Tile {
         this.name = "BombTile";
     }
     handleClick() {
+        this.solve();
+        // this.color = "red";
         console.log("BOOOOOOOOOOOOOOOOOOOM");
+        this.draw();
+    }
+    drawData(ctx, x, y, color) {
+        let image = document.getElementById("mine");
+        this.drawFill(ctx, x, y, "rgba(220, 50, 50, 1)");
+
+        let width = this.sidelength / 1.3;
+        x = x + ((this.sidelength - width) / 2);
+        y = y + ((this.sidelength - width) / 2);
+
+        ctx.drawImage(image, x, y, width, width);
+
     }
 }
