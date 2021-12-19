@@ -1,5 +1,5 @@
 import BombTile from "./Tiles/bombTile.js";
-import Tile from "./Tiles/tile.js";
+import ClearTile from "./Tiles/clearTile.js";
 
 export default class Board {
     constructor(canvas, rows, columns, darkCol = "blue", lightCol = "red") {
@@ -25,7 +25,7 @@ export default class Board {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
                 let color = this.changeColor(i, j);
-                this.tiles.push(new Tile(canvas, id, size * j, size * i, size, color));
+                this.tiles.push(new ClearTile(canvas, id, size * j, size * i, size, color));
                 id++;
             }
         }
@@ -74,7 +74,6 @@ export default class Board {
         const col = Math.floor(x / this.tileSize);
         const row = Math.floor(y / this.tileSize);
         const index = ((col) + (row * this.columns));
-        console.log("clicked tile " + index);
         console.log(this.tiles[index].id);
 
         return this.tiles[index];
@@ -94,6 +93,9 @@ export default class Board {
     }
 
     createBombs(numBombs) {
+        if(numBombs > this.tiles.length) {
+            numBombs = this.tiles.length;
+        }
         for(let i = 0; i < numBombs; i++) {
             let randIndex = Math.floor(Math.random() * this.tiles.length);
             while(this.tiles[randIndex].getName() == "BombTile") {   // REPEAT until the tile is not already a bomb

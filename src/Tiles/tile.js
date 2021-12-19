@@ -45,7 +45,7 @@ export default class Tile {
         ctx.fillRect(x, y, this.width, this.height); // x y width height
         
         if(!this.isSolved) {
-            const indentDepth = .333;
+            const indentDepth = .25;
             this.drawIndentLight(ctx, x, y, 2 / (indentDepth), "rgba(255, 255, 255, 0.6)");
             this.drawIndentDark(ctx, x, y, 2 / (indentDepth), "rgba(0, 0, 0, 0.33)");
         }
