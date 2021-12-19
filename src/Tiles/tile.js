@@ -13,6 +13,7 @@ export default class Tile {
         this.height = sidelength;
         this.isSolved = false;
         this.name = "Tile";
+        this.hasFlag = true;
     }
 
     getID() {
@@ -55,11 +56,30 @@ export default class Tile {
             this.drawFill(ctx, x, y, "rgb(150,150,150)");
             this.drawIndentLight(ctx, x, y, 2 / (indentDepth), "rgba(255, 255, 255, 0.7)");
             this.drawIndentDark(ctx, x, y, 2 / (indentDepth), "rgba(0, 0, 0, 0.33)");
+            this.drawFlag(ctx, x, y, 2/indentDepth, "orange");
         }
     }
 
-    drawData(ctx,x,y,color) {
+    drawData(ctx, x, y, color) {
         console.error("unimplemented command");
+    }
+    drawFlag(ctx, x, y, fac, color) {
+        const len = this.sidelength;
+        const maxX = x + len;
+        const maxY = y + len;
+        const val = Math.floor(len / fac);
+
+        if(this.hasFlag) {
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.moveTo(((maxX + x) / 2) - (val * 1.5) + (len * 0.03), y + (3 * val) - (len * 0.1));
+            ctx.lineTo(((maxX + x) / 2) + (val * 1.5) + (len * 0.03), (maxY + y) / 2 - (len * 0.1));
+            ctx.lineTo(((maxX + x) / 2) - (val * 1.5)+ (len * 0.03), maxY - (3 * val) - (len * 0.1));
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillStyle = "black";
+            ctx.fillRect(((maxX + x) / 2) - (val * 1.5) + (len * 0.03),y + (2 * val), len * 0.05, len - (4 * val));
+        }
     }
     drawFill(ctx, x, y, color) {
         ctx.fillStyle = color;

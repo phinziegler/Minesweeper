@@ -14,12 +14,15 @@ export default class ClearTile extends Tile {
 
     drawData(ctx, x, y, color) {
         if(this.nearbyBombs > 0) {
-            ctx.fillStyle = "red";
-            let fontSize = Math.floor(this.sidelength);
+
+            ctx.fillStyle = this.numberColor();
+
+
+            let fontSize = Math.floor(this.sidelength)/1.2;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fontWeight = "bold";
-            ctx.font = parseInt(fontSize) + "px monospace";
+            ctx.font = parseInt(fontSize) + "px Impact";
 
             let text = ctx.measureText(parseInt(this.nearbyBombs));
             let width = text.width;
@@ -31,6 +34,21 @@ export default class ClearTile extends Tile {
         }
     }
 
+    numberColor() {
+        switch(this.nearbyBombs) {
+            case 1:
+                return "#42a";
+            case 2:
+                return "#351";
+            case 3:
+                return "#a00";
+            case 4: 
+                return "#c73";
+            case 5:
+                return "#000";
+        }
+        return "black";
+    }
     calculateNearbyBombs() {
         let surrounding = this.board.getSurroundingTiles(this.id);
         let bombs = 0;
