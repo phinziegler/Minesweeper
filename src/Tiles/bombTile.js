@@ -8,6 +8,9 @@ export default class BombTile extends Tile {
     handleClick() {
         this.board.revealBombs();
     }
+    solve() {
+        this.isSolved = true;
+    }
     drawData(ctx, x, y, color) {
         let image = document.getElementById("mine");
         this.drawFill(ctx, x, y, "rgba(220, 50, 50, 1)");

@@ -39,11 +39,7 @@ export default class Tile {
     }
 
     solve() {
-        if(this.hasFlag) {
-            this.hasFlag = false;
-            this.board.changeFlagCount(1);
-        }
-        this.isSolved = true;
+        throw new Error("solve() unimplemented");
     }
 
     draw() {

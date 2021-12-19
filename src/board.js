@@ -37,6 +37,30 @@ export default class Board {
         this.firstClick = true;
         this.numBombs = numBombs;
         this.bombList = [];
+        this.solvedList = [];
+    }
+
+    win() {
+        console.log("win");
+        let ctx = this.canvas.getContext("2d");
+
+        ctx.fillStyle = "black";
+        ctx.font = "70px Impact";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        
+        ctx.fillText("You Win!", this.canvas.width/2, this.canvas.height/2.5);
+
+        this.play = false;
+    }
+
+    addToSolvedList(tile) {
+        if(!this.solvedList.includes(tile)) {
+            this.solvedList.push(tile);
+        }
+        if(this.solvedList.length == this.tiles.length - this.bombList.length) {
+            this.win();
+        }
     }
 
     setFirstClick(bool) {
@@ -99,9 +123,13 @@ export default class Board {
 
     // DRAW THE TILES ON CANVAS
     draw() {
+        console.trace("draw");
         this.clearCanvas();
         for (let i = 0; i < this.tiles.length; i++) {
             this.tiles[i].draw();
+        }
+        if(this.solvedList.length == this.tiles.length - this.bombList.length) {
+            this.win();
         }
     }
 

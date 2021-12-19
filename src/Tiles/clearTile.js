@@ -12,6 +12,15 @@ export default class ClearTile extends Tile {
         return this.nearbyBombs;
     }
 
+    solve() {
+        if(this.hasFlag) {
+            this.hasFlag = false;
+            this.board.changeFlagCount(1);
+        }
+        this.isSolved = true;
+        this.board.addToSolvedList(this);
+    }
+
     drawData(ctx, x, y, color) {
         if(this.nearbyBombs > 0) {
 
@@ -21,7 +30,6 @@ export default class ClearTile extends Tile {
             let fontSize = Math.floor(this.sidelength)/1.2;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fontWeight = "bold";
             ctx.font = parseInt(fontSize) + "px Impact";
 
             let text = ctx.measureText(parseInt(this.nearbyBombs));
@@ -71,12 +79,12 @@ export default class ClearTile extends Tile {
         }
         let surrounding = this.board.getSurroundingTiles(this.id);
         let numBombs = this.calculateNearbyBombs();
+        this.draw();
         if(numBombs == 0) {
             console.log("did search");
             this.search(this, surrounding);
+            this.board.draw();
         }
-        this.board.draw();
-
     }
 
     // Use push and shift to operate queue
