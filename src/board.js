@@ -1,3 +1,4 @@
+import BombTile from "./Tiles/bombTile.js";
 import Tile from "./Tiles/tile.js";
 
 export default class Board {
@@ -12,7 +13,7 @@ export default class Board {
         this.createBoard(canvas, rows, columns);
         // Listen for mousedown events on the canvas.
         this.canvas.addEventListener("mousedown", (e) => {
-            this.getTile(this.mouseLocation(e));
+            this.getTile(this.mouseLocation(e)).handleClick();
         });
     }
 
@@ -90,5 +91,16 @@ export default class Board {
             x: x, 
             y: y
         };
+    }
+
+    createBombs(numBombs) {
+        for(let i = 0; i < numBombs; i++) {
+            let randIndex = Math.floor(Math.random() * this.tiles.length);
+            while(this.tiles[randIndex].getName() == "BombTile") {   // REPEAT until the tile is not already a bomb
+                randIndex = Math.floor(Math.random() * this.tiles.length);
+            }
+            const save = this.tiles[randIndex];
+            this.tiles[randIndex] = new BombTile(this.canvas, save.getID(), save.getX(), save.getY(), save.getSidelength(), save.getColor());
+        }        
     }
 }

@@ -11,7 +11,31 @@ export default class Tile {
         this.width = sidelength;
         this.height = sidelength;
         this.isSolved = false;
+        this.name = "Tile";
     }
+
+    getID() {
+        return this.id;
+    }
+    getPosition() {
+        return this.position;
+    }
+    getX() {
+        return this.position.x;
+    }
+    getY() {
+        return this.position.y;
+    }
+    getSidelength() {
+        return this.sidelength;
+    }
+    getColor() {
+        return this.color;
+    }
+    getName() {
+        return this.name;
+    }
+
     draw() {
         const x = this.position.x;
         const y = this.position.y;
