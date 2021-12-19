@@ -37,21 +37,34 @@ export default class Tile {
         return this.name;
     }
 
+    solve() {
+        this.isSolved = true;
+    }
+
     draw() {
         const x = this.position.x;
         const y = this.position.y;
         let ctx = this.ctx;
 
-        ctx.fillStyle = this.color;
-        ctx.fillRect(x, y, this.width, this.height); // x y width height
-        
-        if(!this.isSolved) {
+        if (this.isSolved) {
+            this.drawFill(ctx, x, y, this.color);
+            this.drawData(ctx, x, y, this.color);
+        }
+        else {
             const indentDepth = .25;
+            this.drawFill(ctx, x, y, "rgb(150,150,150)");
             this.drawIndentLight(ctx, x, y, 2 / (indentDepth), "rgba(255, 255, 255, 0.7)");
             this.drawIndentDark(ctx, x, y, 2 / (indentDepth), "rgba(0, 0, 0, 0.33)");
         }
     }
 
+    drawData(ctx,x,y,color) {
+        console.error("unimplemented command");
+    }
+    drawFill(ctx, x, y, color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, this.sidelength, this.sidelength);
+    }
     drawIndentLight(ctx, x, y, fac, color) {
         const len = this.sidelength;
         const maxX = x + len;

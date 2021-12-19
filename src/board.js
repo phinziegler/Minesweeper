@@ -2,7 +2,7 @@ import BombTile from "./Tiles/bombTile.js";
 import ClearTile from "./Tiles/clearTile.js";
 
 export default class Board {
-    constructor(canvas, rows, columns, darkCol = "blue", lightCol = "red") {
+    constructor(canvas, rows, columns, numBombs, darkCol = "blue", lightCol = "red") {
         this.tiles = [];
         this.canvas = canvas;
         this.darkCol = darkCol;
@@ -13,8 +13,14 @@ export default class Board {
         this.createBoard(canvas, rows, columns);
         // Listen for mousedown events on the canvas.
         this.canvas.addEventListener("mousedown", (e) => {
-            this.getTile(this.mouseLocation(e)).handleClick();
+            this.getTile(this.mouseLocation(e)).handleClick(this.firstClick);
         });
+        this.firstClick = true;
+        this.numBombs = numBombs;
+    }
+
+    setFirstClick(bool) {
+        this.firstClick = bool;
     }
 
     // INITIALIZE THE BOARD
@@ -113,13 +119,13 @@ export default class Board {
         };
     }
 
-    createBombs(numBombs) {
-        if(numBombs > this.tiles.length) {
-            numBombs = this.tiles.length;
+    createBombs(exceptions) {
+        if(this.numBombs > this.tiles.length - exceptions.length) {
+            this.numBombs = this.tiles.length - exceptions.length;
         }
-        for(let i = 0; i < numBombs; i++) {
+        for(let i = 0; i < this.numBombs; i++) {
             let randIndex = Math.floor(Math.random() * this.tiles.length);
-            while(this.tiles[randIndex].getName() == "BombTile") {   // REPEAT until the tile is not already a bomb
+            while(this.tiles[randIndex].getName() == "BombTile" || exceptions.includes(this.tiles[randIndex])) {
                 randIndex = Math.floor(Math.random() * this.tiles.length);
             }
             const save = this.tiles[randIndex];
