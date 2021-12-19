@@ -11,6 +11,7 @@ export default class Board {
         this.rows = rows;
         this.columns = columns;
         this.play = true;
+        this.flagCount = numBombs;
         this.createBoard(canvas, rows, columns);
         // Listen for mousedown events on the canvas.
         this.canvas.addEventListener("mousedown", (e) => {
@@ -40,6 +41,13 @@ export default class Board {
 
     setFirstClick(bool) {
         this.firstClick = bool;
+    }
+
+    changeFlagCount(change) {
+        this.flagCount = this.flagCount + change;
+    }
+    getFlagCount() {
+        return this.flagCount;
     }
 
     // INITIALIZE THE BOARD

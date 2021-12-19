@@ -97,7 +97,7 @@ export default class ClearTile extends Tile {
 
             if(!visited.includes(next)) {
                 let nextSur = this.board.getSurroundingTiles(next.getID());
-                visited.push(next)
+                visited.push(next);
                 
                 for(let i = 0; i < nextSur.length; i++) {
                     let s = nextSur[i];

@@ -39,6 +39,10 @@ export default class Tile {
     }
 
     solve() {
+        if(this.hasFlag) {
+            this.hasFlag = false;
+            this.board.changeFlagCount(1);
+        }
         this.isSolved = true;
     }
 
@@ -125,12 +129,18 @@ export default class Tile {
     }
     handleFlag() {
         if(this.hasFlag) {
+            this.board.changeFlagCount(1);
             this.hasFlag = false;
             this.draw();
+            console.log("FlagCount: " + this.board.getFlagCount());
             return;
         }
-        this.hasFlag = true;
-        this.draw();
+        if(this.board.getFlagCount() > 0) {
+            this.board.changeFlagCount(-1);
+            this.hasFlag = true;
+            this.draw();
+            console.log("FlagCount: " + this.board.getFlagCount());
+        }
     }
 
 }
