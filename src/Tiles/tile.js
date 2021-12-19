@@ -13,7 +13,7 @@ export default class Tile {
         this.height = sidelength;
         this.isSolved = false;
         this.name = "Tile";
-        this.hasFlag = true;
+        this.hasFlag = false;
     }
 
     getID() {
@@ -122,6 +122,15 @@ export default class Tile {
 
     handleClick() {
         throw new Error("handleClick() cannot be called on abstract class \"Tile\"");
+    }
+    handleFlag() {
+        if(this.hasFlag) {
+            this.hasFlag = false;
+            this.draw();
+            return;
+        }
+        this.hasFlag = true;
+        this.draw();
     }
 
 }

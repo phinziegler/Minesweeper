@@ -13,7 +13,19 @@ export default class Board {
         this.createBoard(canvas, rows, columns);
         // Listen for mousedown events on the canvas.
         this.canvas.addEventListener("mousedown", (e) => {
-            this.getTile(this.mouseLocation(e)).handleClick(this.firstClick);
+            switch (e.which) {
+                case 1:
+                    this.getTile(this.mouseLocation(e)).handleClick(this.firstClick);
+                    break;
+                case 3:
+                    this.getTile(this.mouseLocation(e)).handleFlag();
+                    break;
+                default:
+                    break;
+            }
+        });
+        this.canvas.addEventListener("contextmenu", (e) => {
+            e.preventDefault();     // Prevent context menu opening
         });
         this.firstClick = true;
         this.numBombs = numBombs;
