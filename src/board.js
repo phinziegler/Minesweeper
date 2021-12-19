@@ -25,10 +25,21 @@ export default class Board {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
                 let color = this.changeColor(i, j);
-                this.tiles.push(new ClearTile(canvas, id, size * j, size * i, size, color));
+                this.tiles.push(new ClearTile(canvas, this, id, size * j, size * i, size, color));
                 id++;
             }
         }
+    }
+
+    getRow(index) {
+        let row = Math.floor(index / this.columns);
+        // console.log("index = " + index + ", row = " + row);
+        return row;
+    }
+    getCol(index) {
+        let col = Math.floor(index % this.columns);
+        // console.log("index = " + index + ", col = " + col);
+        return col;
     }
 
     // CALCULATE CORRECT TILE SIZE, AND REFIT CANVAS
@@ -40,7 +51,7 @@ export default class Board {
         this.canvas.height = min * rows;
         this.canvas.width = min * columns;
 
-        console.log(this.canvas.width + ", " + this.canvas.height);
+        // console.log(this.canvas.width + ", " + this.canvas.height);
 
         return min;
     }
@@ -74,9 +85,19 @@ export default class Board {
         const col = Math.floor(x / this.tileSize);
         const row = Math.floor(y / this.tileSize);
         const index = ((col) + (row * this.columns));
-        console.log(this.tiles[index].id);
+        // console.log(this.tiles[index].id);
 
         return this.tiles[index];
+    }
+    getTileCoord(col, row) {
+        if(col < 0 || col >= this.columns || row < 0 || row >= this.rows) {
+            return null;
+        }
+        const index = ((col) + (row * this.columns));
+        if (this.tiles[index] != null) {
+            return this.tiles[index];
+        }
+        return null;
     }
 
     mouseLocation(e) {
@@ -102,7 +123,39 @@ export default class Board {
                 randIndex = Math.floor(Math.random() * this.tiles.length);
             }
             const save = this.tiles[randIndex];
-            this.tiles[randIndex] = new BombTile(this.canvas, save.getID(), save.getX(), save.getY(), save.getSidelength(), save.getColor());
+            this.tiles[randIndex] = new BombTile(this.canvas, this, save.getID(), save.getX(), save.getY(), save.getSidelength(), save.getColor());
         }        
+    }
+
+    getSurroundingTiles(index) {
+        const col = this.getCol(index);
+        const row = this.getRow(index);
+
+        let checks = [
+            this.getTileCoord(col - 1, row - 1),
+            this.getTileCoord(col + 0, row - 1),
+            this.getTileCoord(col + 1, row - 1),
+
+            this.getTileCoord(col - 1, row + 0),
+            this.getTileCoord(col + 1, row + 0),
+            
+            this.getTileCoord(col - 1, row + 1),
+            this.getTileCoord(col + 0, row + 1),
+            this.getTileCoord(col + 1, row + 1),
+        ]
+        
+        let output = [];
+        for(let i = 0; i < checks.length; i++) {
+            if(checks[i] != null) {
+                output.push(checks[i]);
+            }
+        }
+
+        // console.log(index + " has " + output.length + " surrounding tiles:");
+        // for(let i = 0; i < output.length; i++) {
+        //     console.log(output[i].getID());
+        // }
+
+        return output;
     }
 }

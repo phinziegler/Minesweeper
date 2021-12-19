@@ -1,6 +1,7 @@
 export default class Tile {
-    constructor(canvas, id, x, y, sidelength, color) {
+    constructor(canvas, board, id, x, y, sidelength, color) {
         this.ctx = canvas.getContext("2d");
+        this.board = board;
         this.id = id;
         this.position = {   // top left corner
             x: x,
@@ -46,7 +47,7 @@ export default class Tile {
         
         if(!this.isSolved) {
             const indentDepth = .25;
-            this.drawIndentLight(ctx, x, y, 2 / (indentDepth), "rgba(255, 255, 255, 0.6)");
+            this.drawIndentLight(ctx, x, y, 2 / (indentDepth), "rgba(255, 255, 255, 0.7)");
             this.drawIndentDark(ctx, x, y, 2 / (indentDepth), "rgba(0, 0, 0, 0.33)");
         }
     }
