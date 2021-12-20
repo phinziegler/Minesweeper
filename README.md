@@ -6,4 +6,4 @@ This is just a simple minesweeper clone.
  Control over the random seed used to generate the board.<br>
  A better, more sophisticated tile/board size calculation algorithm.<br>
 Link to this github repo and credit.<br>
-Instructions for minesweeper.
+Instructions for minesweeper and how to use the site.
