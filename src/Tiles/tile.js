@@ -124,6 +124,9 @@ export default class Tile {
         throw new Error("handleClick() cannot be called on abstract class \"Tile\"");
     }
     handleFlag() {
+        if(this.isSolved) {
+            return;
+        }
         if(this.hasFlag) {
             this.board.changeFlagCount(1);
             this.hasFlag = false;
