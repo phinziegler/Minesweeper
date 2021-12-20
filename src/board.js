@@ -113,7 +113,7 @@ export default class Board {
         this.canvas.height = min * rows;
         this.canvas.width = min * columns;
 
-        console.log(this.canvas.width);
+        // console.log(this.canvas.width);
 
         return min;
     }
