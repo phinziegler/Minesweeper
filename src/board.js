@@ -82,6 +82,7 @@ export default class Board {
 
     // INITIALIZE THE BOARD
     createBoard(canvas, rows, cols) {
+        this.clearCanvas();
         const size = this.tileSize;
         let id = 0;
 
@@ -107,7 +108,7 @@ export default class Board {
     calculateSize(width, height, rows, columns) {
         const colSize = (width / columns);
         const rowSize = (height / rows);
-        const min = Math.floor(Math.min(rowSize, colSize));
+        const min = Math.floor(Math.max(rowSize, colSize));
 
         this.canvas.height = min * rows;
         this.canvas.width = min * columns;

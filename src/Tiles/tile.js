@@ -131,14 +131,14 @@ export default class Tile {
             this.board.changeFlagCount(1);
             this.hasFlag = false;
             this.draw();
-            console.log("FlagCount: " + this.board.getFlagCount());
+            // console.log("FlagCount: " + this.board.getFlagCount());
             return;
         }
         if(this.board.getFlagCount() > 0) {
             this.board.changeFlagCount(-1);
             this.hasFlag = true;
             this.draw();
-            console.log("FlagCount: " + this.board.getFlagCount());
+            // console.log("FlagCount: " + this.board.getFlagCount());
         }
     }
 
