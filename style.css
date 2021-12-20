@@ -27,24 +27,28 @@ html {
     transform: translateX(-50%);
 }
 #gameInfo {
-    font-family: monospace;
+    /* font-family: monospace; */
     font-size: 1.3rem;
     color: white;
     /* font-size: 1.4rem; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     background-color: rgb(85, 85, 85);
     border-radius: 10px 10px 0 0;
+
     border-top: 4px inset rgba(255, 255, 255, .7);
     border-left: 4px inset rgba(255, 255, 255, .7);
     border-bottom: 4px inset rgba(0, 0, 0, .4);
     border-right: 4px inset rgba(0, 0, 0, .4);
 
+    height: 60px;
+
 }
 .info {
     /* background-color: green; */
-    line-height: 40px;
+    /* line-height: 60px; */
     /* width: 100px; */
 }
 #canvas {
@@ -60,11 +64,20 @@ html {
 #timer {
     font-family: monospace;
     text-align: right;
-    width: 8ch;
+    width: 10ch;
+    color: rgb(0, 184, 46);
+    border-radius: 5px;
+    padding: 5px 10px 5px 5px;
+    background-color: rgb(26, 26, 26);
+
+    border-top: 3px inset hsla(0, 0%, 55%,1);
+    border-left: 3px inset hsla(0, 0%, 55%,1);
+    border-bottom: 3px inset rgb(146, 146, 146);
+    border-right: 3px inset rgb(146, 146, 146);
 }
 #gameInfo > label {
     text-align: center;
-    line-height: 40px;
+    /* line-height: 60px; */
     /* width: 200px; */
     /* background-color: red; */
 }
@@ -74,6 +87,7 @@ html {
     text-align: center;
     width: 5ch;
     border-radius: 5px;
+    background-color: rgb(212, 212, 212);
 }
 /* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
