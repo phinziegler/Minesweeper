@@ -10,6 +10,8 @@
     <!-- LINKS AND SCRIPTS -->
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/script.js" defer></script>
+    <script type="module" src="src/script.js" defer></script>
+
 </head>
 
 <!-- PAGE START-->
@@ -25,15 +27,24 @@
     <!-- GAME -->
     <div id="gameBox">
         <div id="gameInfo">
-            <div id="timer" class="info">
-                TIME
-            </div>
+            <p id="timer" class="info">
+                0.00
+            </p>
             <div id="flagCount" class="info">
-                Flags: 40
+                loading
             </div>
-            <div id="difficulty" class="info">
-                DIFFICULTY
-            </div>
+            <label for="columns">
+                Columns
+                <input id="columns" value="16"class="setting"type="number" step="1.0" min="1">
+            </label>
+            <label for="rows">
+                Rows
+                <input id="rows" value="16"class="setting"type="number" step="1.0" min="1">
+            </label>
+            <label for="bombs">
+                Bombs
+                <input id="bombs" value="40"class="setting"type="number" step="1.0" min="1">
+            </label>
         </div>
         <canvas id="canvas" width="700" height="700"></canvas>
     </div>

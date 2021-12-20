@@ -69,19 +69,19 @@ export default class ClearTile extends Tile {
         this.solve();
         return bombs;
     }
-    
+
     handleClick(firstClick) {
         if(firstClick) {
             let all = this.board.getSurroundingTiles(this.id);
             all.push(this);
             this.board.createBombs(all);
-            this.board.setFirstClick(false);
+            this.board.doFirstClick();
         }
         let surrounding = this.board.getSurroundingTiles(this.id);
         let numBombs = this.calculateNearbyBombs();
         this.draw();
         if(numBombs == 0) {
-            console.log("did search");
+            // console.log("did search");
             this.search(this, surrounding);
             this.board.draw();
         }

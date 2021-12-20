@@ -1,5 +1,6 @@
 import BombTile from "./Tiles/bombTile.js";
 import ClearTile from "./Tiles/clearTile.js";
+import Timer from "./timer.js";
 
 export default class Board {
     constructor(canvas, rows, columns, numBombs, darkCol = "blue", lightCol = "red") {
@@ -12,6 +13,7 @@ export default class Board {
         this.columns = columns;
         this.play = true;
         this.flagCount = numBombs;
+        this.updateFlagCounter();
         this.createBoard(canvas, rows, columns);
         this.canvas.addEventListener("mousedown", (e) => {
             if(this.play) {
@@ -37,9 +39,11 @@ export default class Board {
         this.numBombs = numBombs;
         this.bombList = [];
         this.solvedList = [];
+        this.timer = new Timer(this);
     }
 
     win() {
+        this.timer.stop();
         let ctx = this.canvas.getContext("2d");
         ctx.fillStyle = "black";
         ctx.font = "70px Impact";
@@ -59,12 +63,18 @@ export default class Board {
         }
     }
 
-    setFirstClick(bool) {
-        this.firstClick = bool;
+    doFirstClick() {
+        this.timer.start();
+        this.firstClick = false;
     }
 
     changeFlagCount(change) {
         this.flagCount = this.flagCount + change;
+        this.updateFlagCounter();
+    }
+    updateFlagCounter() {
+        const element = document.getElementById("flagCount");
+        element.innerText = "Flags: "+ this.flagCount;
     }
     getFlagCount() {
         return this.flagCount;
@@ -115,7 +125,7 @@ export default class Board {
 
     // DRAW THE TILES ON CANVAS
     draw() {
-        console.trace("draw");
+        // console.trace("draw");
         this.clearCanvas();
         for (let i = 0; i < this.tiles.length; i++) {
             this.tiles[i].draw();
@@ -141,7 +151,7 @@ export default class Board {
 
         return this.tiles[index];
     }
-    
+
     getTileCoord(col, row) {
         if(col < 0 || col >= this.columns || row < 0 || row >= this.rows) {
             return null;
@@ -208,6 +218,7 @@ export default class Board {
     }
 
     revealBombs() {
+        this.timer.stop();
         for(let i = 0; i < this.bombList.length; i++) {
             this.bombList[i].solve();
             this.bombList[i].draw();

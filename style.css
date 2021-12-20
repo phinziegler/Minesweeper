@@ -27,8 +27,10 @@ html {
     transform: translateX(-50%);
 }
 #gameInfo {
+    font-family: monospace;
+    font-size: 1.3rem;
     color: white;
-    font-size: 1.4rem;
+    /* font-size: 1.4rem; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -41,8 +43,9 @@ html {
 
 }
 .info {
+    /* background-color: green; */
     line-height: 40px;
-    width: 100px;
+    /* width: 100px; */
 }
 #canvas {
     margin-top: 5px;
@@ -54,10 +57,31 @@ html {
 #mine {
     display: none;
 }
-#c2 {
-    background-color: green;
+#timer {
+    font-family: monospace;
+    text-align: right;
+    width: 8ch;
 }
-/* @font-face {
-    font-family: 'KulminoituvaRegular';
-    src: url('http://www.miketaylr.com/f/kulminoituva.ttf');
+#gameInfo > label {
+    text-align: center;
+    line-height: 40px;
+    /* width: 200px; */
+    /* background-color: red; */
+}
+.setting {
+    font-family: monospace;
+    font-size: 1rem;
+    text-align: center;
+    width: 5ch;
+    border-radius: 5px;
+}
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+/* input[type=number] {
+  -moz-appearance: textfield;
 } */
