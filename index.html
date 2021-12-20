@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/script.js" defer></script>
     <script src="https://kit.fontawesome.com/73970ed689.js" crossorigin="anonymous"></script>
+    <script src="src/menus.js" defer></script>
 
 </head>
 
@@ -52,7 +53,10 @@
         <input id="reset"type="submit"value="Reset">
     </label>
     <div id='about'>
-        <i id="aboutIndicator" class="fas fa-bars"></i>
+        <div id="toggleMenu">
+            <!-- <i style="display: none;"class="fas fa-times"></i> -->
+            <i id="aboutIndicator" class="fas fa-chevron-right"></i>
+        </div>
         <div id="aboutContent">
             <h2>Controls</h2>
             <hr>
@@ -81,7 +85,7 @@
             <h2>Contact Me</h2>
             <hr>
             <p class = "aboutLink">
-                <i class="fab fa-github"></i> <a target="_blank"href="https://github.com/phinziegler/Minesweeper">Website Repository</a>
+                <i class="fab fa-github"></i> <a target="_blank"href="https://github.com/phinziegler/Minesweeper">Repository</a>
             </p>
             <p class = "aboutLink">
                 <i class="far fa-envelope"></i> <a

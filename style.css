@@ -138,20 +138,30 @@ input::-webkit-inner-spin-button {
     border-right: 25px solid rgb(56, 56, 56);
     box-shadow:rgb(44, 44, 44) 6px 0px 0px;
     background-color: rgb(39, 39, 39);
-    /* background-image: linear-gradient(to bottom left, rgba(44, 52, 63, 1), rgb(20, 33, 49)); */
     overflow-x: visible;
-    transition: transform .4s;
+    transition: transform .2s;
     line-height: 1.6rem;
 }
-#about:hover {
+/* #about:hover {
+    border-right: 25px solid rgb(77, 77, 77);;
+} */
+.open {
     transform: translate(475px);
 }
 #aboutIndicator {
-    color: rgb(211, 211, 211);
     font-size: 20px;
     position: absolute;
-    right: -22px;
+    right: -40px;
     top: 20px;
+    /* background-color: red; */
+    padding: 20px;
+    border-radius: 50%;
+}
+#aboutIndicator:hover {
+    color: rgb(0, 184, 46);
+}
+.highlighted {
+    color: red;
 }
 h2 {
     font-size: 1.6rem;
