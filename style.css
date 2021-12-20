@@ -54,7 +54,9 @@ html {
 #mine {
     display: none;
 }
-
+#c2 {
+    background-color: green;
+}
 /* @font-face {
     font-family: 'KulminoituvaRegular';
     src: url('http://www.miketaylr.com/f/kulminoituva.ttf');
