@@ -46,11 +46,11 @@ html {
     height: 60px;
 
 }
-.info {
+/* .info {
     /* background-color: green; */
     /* line-height: 60px; */
     /* width: 100px; */
-}
+/* } */
 #canvas {
     margin-top: 5px;
     position: relative;
