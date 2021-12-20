@@ -13,7 +13,6 @@ export default class Board {
         this.play = true;
         this.flagCount = numBombs;
         this.createBoard(canvas, rows, columns);
-        // Listen for mousedown events on the canvas.
         this.canvas.addEventListener("mousedown", (e) => {
             if(this.play) {
 
@@ -41,16 +40,13 @@ export default class Board {
     }
 
     win() {
-        console.log("win");
         let ctx = this.canvas.getContext("2d");
-
         ctx.fillStyle = "black";
         ctx.font = "70px Impact";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         
         ctx.fillText("You Win!", this.canvas.width/2, this.canvas.height/2.5);
-
         this.play = false;
     }
 
@@ -90,12 +86,10 @@ export default class Board {
 
     getRow(index) {
         let row = Math.floor(index / this.columns);
-        // console.log("index = " + index + ", row = " + row);
         return row;
     }
     getCol(index) {
         let col = Math.floor(index % this.columns);
-        // console.log("index = " + index + ", col = " + col);
         return col;
     }
 
@@ -107,8 +101,6 @@ export default class Board {
 
         this.canvas.height = min * rows;
         this.canvas.width = min * columns;
-
-        // console.log(this.canvas.width + ", " + this.canvas.height);
 
         return min;
     }
@@ -146,10 +138,10 @@ export default class Board {
         const col = Math.floor(x / this.tileSize);
         const row = Math.floor(y / this.tileSize);
         const index = ((col) + (row * this.columns));
-        // console.log(this.tiles[index].id);
 
         return this.tiles[index];
     }
+    
     getTileCoord(col, row) {
         if(col < 0 || col >= this.columns || row < 0 || row >= this.rows) {
             return null;

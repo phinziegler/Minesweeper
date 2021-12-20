@@ -1,4 +1,3 @@
-import BombTile from "./bombTile.js";
 import Tile from "./tile.js";
 
 export default class ClearTile extends Tile {
@@ -57,6 +56,7 @@ export default class ClearTile extends Tile {
         }
         return "black";
     }
+
     calculateNearbyBombs() {
         let surrounding = this.board.getSurroundingTiles(this.id);
         let bombs = 0;
@@ -65,11 +65,11 @@ export default class ClearTile extends Tile {
                 bombs++;
             }
         }
-        // console.log(bombs + " nearby bombs");
         this.nearbyBombs = bombs;
         this.solve();
         return bombs;
     }
+    
     handleClick(firstClick) {
         if(firstClick) {
             let all = this.board.getSurroundingTiles(this.id);
