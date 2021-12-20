@@ -12,7 +12,9 @@ export default class BombTile extends Tile {
         this.isSolved = true;
     }
     drawData(ctx, x, y, color) {
-        let image = document.getElementById("mine");
+        // let image = document.getElementById("mine");
+        let image = new Image();
+        image.src = "src/images/mine.png";
         this.drawFill(ctx, x, y, "rgba(220, 50, 50, 1)");
 
         let width = this.sidelength / 1.3;
