@@ -10,7 +10,7 @@
     <!-- LINKS AND SCRIPTS -->
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/script.js" defer></script>
-    <script type="module" src="src/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/73970ed689.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -51,6 +51,45 @@
     <label for="reset">
         <input id="reset"type="submit"value="Reset">
     </label>
+    <div id='about'>
+        <i id="aboutIndicator" class="fas fa-bars"></i>
+        <div id="aboutContent">
+            <h2>Controls</h2>
+            <hr>
+            <p class="aboutText">
+                Left click to check for mines.
+            
+            </p>
+            <p class="aboutText">
+                Right click to place a flag.
+            </p>
+            <h2>How to Play</h2>
+            <hr>
+            <p class="aboutText">
+                There are safe tiles, and tiles where mines are hidden. Safe squares will contain a number telling you how many mines are in surrounding tiles. Use these numbers, and what you know already know about nearby tiles to deduce which tiles contain the mines.
+            </p>
+            <p class="aboutText">
+                Clicking on a tile with a bomb will lose the game, however you can safely mark tiles with bombs by placing a flag (right click).
+            </p>
+            <p class="aboutText">
+                When you have identified all safe tiles, you win.
+            </p>
+            <p class="aboutText">
+                Note that the first click is always safe.
+            </p>
+
+            <h2>Contact Me</h2>
+            <hr>
+            <p class = "aboutLink">
+                <i class="fab fa-github"></i> <a target="_blank"href="https://github.com/phinziegler/Minesweeper">Website Repository</a>
+            </p>
+            <p class = "aboutLink">
+                <i class="far fa-envelope"></i> <a
+                    href="mailto: phinziegler@gmail.com" target="_blank">phinziegler@gmail.com</a>
+            </p>
+        </div>
+        <footer>&copy; Phineas Ziegler, 2021</footer>
+    </div>
 </body>
 
 </html>

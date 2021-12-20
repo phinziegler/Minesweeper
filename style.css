@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 :root {
     --textColor: rgb(209, 209, 209);
     --background: rgb(20, 20, 20);
@@ -12,7 +13,7 @@
 html {
     background-color: var(--background);
     color: var(--textColor);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 #intro {
@@ -65,7 +66,7 @@ html {
     display: none;
 }
 #timer {
-    font-family: monospace;
+    font-family: 'Roboto Mono', monospace;
     text-align: right;
     width: 10ch;
     color: rgb(0, 184, 46);
@@ -85,7 +86,7 @@ html {
     /* background-color: red; */
 }
 .setting {
-    font-family: monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 1rem;
     text-align: center;
     width: 5ch;
@@ -108,7 +109,7 @@ input::-webkit-inner-spin-button {
     color: rgb(228, 228, 228);
     padding: 5px;
     font-size: 1.4rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -125,4 +126,67 @@ input::-webkit-inner-spin-button {
 
 #reset:hover {
     background-color: rgb(58, 58, 58);
+}
+#about {
+    padding: 0px 30px 0 30px;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    left: -475px;
+    top: 0px;
+    width: 500px;
+    border-right: 25px solid rgb(56, 56, 56);
+    box-shadow:rgb(44, 44, 44) 6px 0px 0px;
+    background-color: rgb(39, 39, 39);
+    /* background-image: linear-gradient(to bottom left, rgba(44, 52, 63, 1), rgb(20, 33, 49)); */
+    overflow-x: visible;
+    transition: transform .4s;
+    line-height: 1.6rem;
+}
+#about:hover {
+    transform: translate(475px);
+}
+#aboutIndicator {
+    color: rgb(211, 211, 211);
+    font-size: 20px;
+    position: absolute;
+    right: -22px;
+    top: 20px;
+}
+h2 {
+    font-size: 1.6rem;
+    margin-top: 35px;
+    text-align: center;
+}
+hr {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+.aboutText {
+    margin-top: 10px;
+}
+.aboutLink>a {
+    color: white;
+    text-decoration: none;
+}
+.aboutLink>a:hover {
+    text-decoration: underline;
+}
+
+.aboutLink {
+    color:var(--orange);
+    margin-bottom: 5px;
+    text-align: left;
+    margin-left: 30px;
+}
+footer {
+    padding: 10px 0px 10px 0px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    text-align: center;
+    width: 300px;
+    background-color: rgb(78, 78, 78);
+    border-radius: 20px 20px 0 0;
 }
